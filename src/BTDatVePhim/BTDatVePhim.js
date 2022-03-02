@@ -198,9 +198,9 @@ export default class BTDatVePhim extends Component {
         <h1 className="text-center my-4">MOVIE SEAT SELECTION</h1>
         <div className="container">
           <div className="form__container">
-            <h4 className="form__title text-danger mb-4">
+            <h5 className="text-danger mb-4">
               Fill The Required Details Below And Select Your Seats
-            </h4>
+            </h5>
             <div className="row mb-3">
               <div className="col-6">
                 <label>
@@ -208,6 +208,7 @@ export default class BTDatVePhim extends Component {
                 </label>
                 <input className="form-control" required></input>
               </div>
+
               <div className="col-6">
                 <label>
                   Number of Seats <span style={{ color: "red" }}>*</span>:
@@ -240,6 +241,7 @@ export default class BTDatVePhim extends Component {
                 <div className="screenBox w-100 h-50 py-3 my-4">
                   SCREEN THIS WAY
                 </div>
+
                 <button className="btn btn-light w-25">
                   Confirm Selection
                 </button>
@@ -248,7 +250,7 @@ export default class BTDatVePhim extends Component {
 
             <table className="table confirmTable mt-4 bg-light text-center">
               <tbody>
-                <tr>
+                <tr className="font-weight-bold">
                   <td>Name</td>
                   <td>Number of Seats</td>
                   <td>Seats</td>
@@ -262,6 +264,7 @@ export default class BTDatVePhim extends Component {
             </table>
           </div>
         </div>
+
         <footer className="text-center pt-3">
           © 2018 Movie Seat Selection . All Rights Reserved | Design by
           W3layouts
