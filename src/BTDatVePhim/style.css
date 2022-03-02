@@ -1,0 +1,86 @@
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  color: white;
+  background: url("../../public/img/banner.jpg") no-repeat center;
+  background-size: cover;
+  box-sizing: border-box;
+}
+
+.form__container {
+  width: 800px;
+  margin: 0 auto;
+  background: rgba(128, 128, 128, 0.34);
+  padding: 4vw;
+}
+
+.form__title {
+  font-size: 20px;
+}
+
+.seatSelection td {
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+}
+
+.seatSelection tr {
+  line-height: 10px;
+}
+
+.seatSelection td:nth-child(13),
+.seatSelection td:nth-child(14) {
+  padding-left: 2px;
+}
+
+.boxChairItem input {
+  position: relative;
+}
+
+.boxChairItem input::before {
+  content: "";
+  width: 35px;
+  height: 30px;
+  border-radius: 5px;
+  display: inline-block;
+  position: absolute;
+  top: -50%;
+  right: -75%;
+  align-items: center;
+  border: 3px solid #ff9800;
+  box-shadow: inset 0px 2px 3px 0px rgb(0 0 0 / 30%),
+    0px 1px 0px 0px rgb(255 255 255 / 80%);
+  background-color: #ffffff;
+}
+
+.screenBox {
+  background-color: peru;
+  color: #000;
+  font-size: 20px;
+  letter-spacing: 3.5px;
+}
+
+.confirmTable td,
+.confirmTable tr {
+  line-height: 30px;
+  border: 2px solid black;
+}
+
+.seatSquare::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.greenSquare::before {
+  background-color: green;
+}
+
+.redSquare::before {
+  background-color: red;
+}
+
+.whiteSquare::before {
+  background-color: white;
+}
