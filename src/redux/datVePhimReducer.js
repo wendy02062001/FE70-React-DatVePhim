@@ -6,7 +6,7 @@ const stateDefault = {
 
 export const datVePhimReducer = (state = stateDefault, action) => {
   switch (action.type) {
-    case "ADD_SEAT":
+    case "ADD_SEAT": {
       let seats = [...state.arrSelectedSeat];
       if (!action.ghe.daDat) {
         seats.push(action.ghe);
@@ -14,6 +14,14 @@ export const datVePhimReducer = (state = stateDefault, action) => {
       }
       state.arrSelectedSeat = seats;
       return { ...state };
+    }
+
+    case "REMOVE_SEAT": {
+      let seats = [...state.arrSelectedSeat];
+      seats = seats.filter((seat) => seat.soGhe !== action.maGhe);
+      state.arrSelectedSeat = seats;
+      return { ...state };
+    }
     default:
       return state;
   }

@@ -42,7 +42,14 @@ class ThongTinMuaVe extends Component {
                     <td>{seat.soGhe}</td>
                     <td>{seat.gia}</td>
                     <td>
-                      <button className="btn btn-danger">Cancel</button>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => {
+                          this.props.removeSeat(seat.soGhe);
+                        }}
+                      >
+                        Remove
+                      </button>
                     </td>
                   </tr>
                 );
@@ -67,4 +74,16 @@ const mapStateToProps = (rootReducer) => {
   };
 };
 
-export default connect(mapStateToProps)(ThongTinMuaVe);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeSeat: (maGhe) => {
+      const action = {
+        type: "REMOVE_SEAT",
+        maGhe,
+      };
+      dispatch(action);
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ThongTinMuaVe);
