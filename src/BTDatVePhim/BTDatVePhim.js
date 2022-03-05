@@ -245,17 +245,6 @@ export default class BTDatVePhim extends Component {
                     </h5>
 
                     <SoDoGhe dataGhe={this.dataGhe} />
-
-                    <div
-                      className="text-white w-100 h-50 py-3 my-4"
-                      style={{ fontSize: "25px", backgroundColor: "peru" }}
-                    >
-                      SCREEN THIS WAY
-                    </div>
-
-                    <button className="btn btn-success w-50 p-3 font-weight-bold">
-                      Confirm Selection
-                    </button>
                   </div>
                 </div>
               </div>

@@ -98,6 +98,22 @@ class SoDoGhe extends Component {
         >
           <tbody>{this.renderGhePhim()}</tbody>
         </table>
+
+        <div
+          className="text-white w-100 h-50 py-3 my-4"
+          style={{ fontSize: "25px", backgroundColor: "peru" }}
+        >
+          SCREEN THIS WAY
+        </div>
+
+        <button
+          className="btn btn-success w-50 p-3 font-weight-bold"
+          onClick={() => {
+            this.props.confirmSelection();
+          }}
+        >
+          Confirm Selection
+        </button>
       </Fragment>
     );
   }
@@ -115,6 +131,13 @@ const mapDispatchToProps = (dispatch) => {
       const action = {
         type: "ADD_SEAT",
         ghe,
+      };
+      dispatch(action);
+    },
+
+    confirmSelection: () => {
+      const action = {
+        type: "CONFIRM_SELECTION",
       };
       dispatch(action);
     },

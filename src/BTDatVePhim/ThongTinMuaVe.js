@@ -42,14 +42,18 @@ class ThongTinMuaVe extends Component {
                     <td>{seat.soGhe}</td>
                     <td>{seat.gia}</td>
                     <td>
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => {
-                          this.props.removeSeat(seat.soGhe);
-                        }}
-                      >
-                        Remove
-                      </button>
+                      {seat.daDat ? (
+                        <p className="text-success">Booked</p>
+                      ) : (
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => {
+                            this.props.removeSeat(seat.soGhe);
+                          }}
+                        >
+                          Remove
+                        </button>
+                      )}
                     </td>
                   </tr>
                 );
