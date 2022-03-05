@@ -34,7 +34,7 @@ class SoDoGhe extends Component {
                     height: "25px",
                   }}
                   onClick={() => {
-                    this.props.addSeat(ghe.soGhe);
+                    this.props.addSeat(ghe);
                   }}
                 ></button>
               </td>
@@ -52,7 +52,7 @@ class SoDoGhe extends Component {
                 height: "25px",
               }}
               onClick={() => {
-                this.props.addSeat(ghe.soGhe);
+                this.props.addSeat(ghe);
               }}
             ></button>
           </td>
@@ -111,8 +111,12 @@ const mapStateToProps = (rootReducer) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addSeat: (maGhe) => {
-      console.log("maGhe", maGhe);
+    addSeat: (ghe) => {
+      const action = {
+        type: "ADD_SEAT",
+        ghe,
+      };
+      dispatch(action);
     },
   };
 };
