@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import SoDoGhe from "./SoDoGhe";
-import "./style.css";
+import style from "./style.module.css";
+import ThongTinMuaVe from "./ThongTinMuaVe";
 
 export default class BTDatVePhim extends Component {
   dataGhe = [
@@ -194,81 +195,74 @@ export default class BTDatVePhim extends Component {
   ];
   render() {
     return (
-      <div className="py-4">
-        <h1 className="text-center my-4">MOVIE SEAT SELECTION</h1>
-        <div className="container">
-          <div className="form__container">
-            <h5 className="text-danger mb-4">
-              Fill The Required Details Below And Select Your Seats
-            </h5>
-            <div className="row mb-3">
-              <div className="col-6">
-                <label>
-                  Name <span style={{ color: "red" }}>*</span>:
-                </label>
-                <input className="form-control" required></input>
-              </div>
-
-              <div className="col-6">
-                <label>
-                  Number of Seats <span style={{ color: "red" }}>*</span>:
-                </label>
-                <input
-                  className="form-control"
-                  type="number"
-                  min="1"
-                  required
-                ></input>
-              </div>
-            </div>
-
-            <button className="btn btn-light w-25 my-2">Start selecting</button>
-
-            <div className="row my-3">
-              <div className=" col-4 seatSquare greenSquare">Selected Seat</div>
-              <div className=" col-4 seatSquare redSquare">Reserved Seat</div>
-              <div className=" col-4 seatSquare whiteSquare">Empty Seat</div>
-            </div>
-
-            <div className="seatSelection text-center">
-              <div className="seat__container">
-                <h5 className="alert-danger py-2 my-3">
-                  Please Select Your Seat NOW!
+      <div
+        className={`${style.commonStyle}`}
+        style={{
+          background: "url(./img/banner.jpg) no-repeat center",
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="container-fluid">
+          <h1 className="text-center py-4 text-white">MOVIE SEAT SELECTION</h1>
+          <div className="row">
+            <div className="col-8">
+              <div className={`${style.formContainer}`}>
+                {/* <h5 className="text-danger mb-4">
+                  Fill The Required Detail Below And Select Your Seats
                 </h5>
+                <div className="form">
+                  <label className="text-white my-3">
+                    Name <span style={{ color: "red" }}>*</span>:
+                  </label>
+                  <input className="form-control" required></input>
+                </div> */}
 
-                <SoDoGhe dataGhe={this.dataGhe} />
-
-                <div className="screenBox w-100 h-50 py-3 my-4">
-                  SCREEN THIS WAY
+                <div className="row my-3 text-white">
+                  <div className="col-4">
+                    <span style={{ color: "green" }}>
+                      <i className="fas fa-square mr-2"></i>
+                    </span>
+                    Selected Seat
+                  </div>
+                  <div className=" col-4">
+                    <span style={{ color: "red" }}>
+                      <i className="fas fa-square mr-2"></i>
+                    </span>
+                    Reserved Seat
+                  </div>
+                  <div className=" col-4">
+                    <span style={{ color: "white" }}>
+                      <i className="fas fa-square mr-2"></i>
+                    </span>
+                    Empty Seat
+                  </div>
                 </div>
 
-                <button className="btn btn-light w-25">
-                  Confirm Selection
-                </button>
+                <div className={style.seatSelection}>
+                  <div className="text-center">
+                    <h5 className="alert-danger py-2 my-3">
+                      Please Select Your Seat NOW!
+                    </h5>
+
+                    <SoDoGhe dataGhe={this.dataGhe} />
+
+                    <div
+                      className="text-white w-100 h-50 py-3 my-4"
+                      style={{ fontSize: "25px", backgroundColor: "peru" }}
+                    >
+                      SCREEN THIS WAY
+                    </div>
+
+                    <button className="btn btn-success w-50 p-3 font-weight-bold">
+                      Confirm Selection
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <table className="table confirmTable mt-4 bg-light text-center">
-              <tbody>
-                <tr className="font-weight-bold">
-                  <td>Name</td>
-                  <td>Number of Seats</td>
-                  <td>Seats</td>
-                </tr>
-                <tr>
-                  <td id="nameConfirm"></td>
-                  <td id="numbConfirm"></td>
-                  <td id="seatConfirm"></td>
-                </tr>
-              </tbody>
-            </table>
+            <ThongTinMuaVe />
           </div>
         </div>
-
-        <footer className="text-center pt-3">
-          © 2018 Movie Seat Selection . All Rights Reserved | Design by
-          W3layouts
-        </footer>
       </div>
     );
   }

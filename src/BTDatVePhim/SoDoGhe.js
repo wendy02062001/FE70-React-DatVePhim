@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
-export default class SoDoGhe extends Component {
+class SoDoGhe extends Component {
   renderBox = (index) => {
     let { dataGhe } = this.props;
     return dataGhe[index].danhSachGhe.map((ghe, idx) => {
@@ -24,16 +25,36 @@ export default class SoDoGhe extends Component {
         if (idx === 5) {
           return (
             <Fragment>
-              <td key={idx} className="boxChairItem">
-                <input type="checkbox" value={ghe.soGhe}></input>
+              <td key={idx}>
+                <button
+                  className="btn"
+                  style={{
+                    backgroundColor: "white",
+                    width: "25px",
+                    height: "25px",
+                  }}
+                  onClick={() => {
+                    this.props.addSeat(ghe.soGhe);
+                  }}
+                ></button>
               </td>
               <td></td>
             </Fragment>
           );
         }
         return (
-          <td key={idx} className="boxChairItem">
-            <input type="checkbox"></input>
+          <td key={idx}>
+            <button
+              className="btn"
+              style={{
+                backgroundColor: "white",
+                width: "25px",
+                height: "25px",
+              }}
+              onClick={() => {
+                this.props.addSeat(ghe.soGhe);
+              }}
+            ></button>
           </td>
         );
       }
@@ -81,3 +102,19 @@ export default class SoDoGhe extends Component {
     );
   }
 }
+
+const mapStateToProps = (rootReducer) => {
+  return {
+    arrSelectedSeat: rootReducer.datVePhimReducer.arrSelectedSeat,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addSeat: (maGhe) => {
+      console.log("maGhe", maGhe);
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SoDoGhe);

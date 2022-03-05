@@ -1,7 +1,9 @@
 import { combineReducers, createStore } from "redux";
+import { datVePhimReducer } from "./datVePhimReducer";
 
 const rootReducer = combineReducers({
   //Nơi chứa các state của ứng dụng
+  datVePhimReducer,
 });
 
 export const store = createStore(

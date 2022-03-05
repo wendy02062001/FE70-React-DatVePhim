@@ -1,7 +1,34 @@
-.vePhimUI {
+.commonStyle {
   font-family: "Source Sans Pro", sans-serif;
+  color: white;
+  overflow-x: hidden !important;
+  padding-bottom: 40px;
 }
 
-.seat__noti {
-  background-color: peru;
+.formContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(128, 128, 128, 0.5);
+  padding: 40px;
+}
+
+.seatSelection td {
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+}
+
+.seatSelection tr {
+  line-height: 10px;
+}
+
+.seatSelection td:nth-child(13),
+.seatSelection td:nth-child(14) {
+  padding-left: 2px;
+}
+
+.confirmTable td,
+.confirmTable tr {
+  line-height: 30px;
+  border: 2px solid black;
 }
