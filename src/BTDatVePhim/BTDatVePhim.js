@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import SoDoGhe from "./SoDoGhe";
-import style from "./style.module.css";
+import style from "./Style.module.css";
 import ThongTinMuaVe from "./ThongTinMuaVe";
 
 export default class BTDatVePhim extends Component {
