@@ -193,6 +193,21 @@ export default class BTDatVePhim extends Component {
       ],
     },
   ];
+
+  state = {
+    nameCus: "",
+  };
+
+  handleChangeInput = (event) => {
+    let { value } = event.target;
+    this.setState(
+      {
+        nameCus: value,
+      },
+      () => console.log(this.state)
+    );
+  };
+
   render() {
     return (
       <div
@@ -207,16 +222,6 @@ export default class BTDatVePhim extends Component {
           <div className="row">
             <div className="col-8">
               <div className={`${style.formContainer}`}>
-                {/* <h5 className="text-danger mb-4">
-                  Fill The Required Detail Below And Select Your Seats
-                </h5>
-                <div className="form">
-                  <label className="text-white my-3">
-                    Name <span style={{ color: "red" }}>*</span>:
-                  </label>
-                  <input className="form-control" required></input>
-                </div> */}
-
                 <div className="row my-3 text-white">
                   <div className="col-4">
                     <span style={{ color: "green" }}>

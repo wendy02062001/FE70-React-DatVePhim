@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
 
 class ThongTinMuaVe extends Component {
   renderTotalAmt = () => {
-    let totalAmt = this.props.datVePhim.arrSelectedSeat.reduce(
+    let totalAmt = this.props.datVePhim.arrBookedSeat.reduce(
+      (amt, seat, index) => {
+        return (amt += seat.gia);
+      },
+      0
+    );
+
+    totalAmt += this.props.datVePhim.arrSelectedSeat.reduce(
       (amt, seat, index) => {
         return (amt += seat.gia);
       },
@@ -14,58 +22,79 @@ class ThongTinMuaVe extends Component {
   };
 
   render() {
-    let { cusName, numSeat, arrSelectedSeat } = this.props.datVePhim;
+    let { numSeat, arrSelectedSeat, arrBookedSeat } = this.props.datVePhim;
+    arrBookedSeat = _.sortBy(arrBookedSeat, ["soGhe"]);
     return (
       <div className="col-3">
         <div
-          className="p-3"
-          style={{ borderRadius: "8px", backgroundColor: "whitesmoke" }}
+          className="card"
+          style={{
+            borderRadius: "8px",
+            backgroundColor: "whitesmoke",
+            border: "none",
+          }}
         >
-          <p
-            className="text-danger font-weight-bold"
-            style={{ fontSize: "22px" }}
-          >
-            Number of Seats: <span>{numSeat}</span>
-          </p>
-          <table className="table text-center">
-            <thead>
-              <tr>
-                <th>Seat</th>
-                <th>Price</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {arrSelectedSeat.map((seat, idx) => {
-                return (
-                  <tr key={idx}>
-                    <td>{seat.soGhe}</td>
-                    <td>{seat.gia}</td>
-                    <td>
-                      {seat.daDat ? (
-                        <p className="text-success">Booked</p>
-                      ) : (
-                        <button
-                          className="btn btn-danger"
-                          onClick={() => {
-                            this.props.removeSeat(seat.soGhe);
-                          }}
-                        >
-                          Remove
-                        </button>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <p
-            className="alert-success font-weight-bold p-3"
-            style={{ fontSize: "22px" }}
-          >
-            TOTAL PRICE : {this.renderTotalAmt()}
-          </p>
+          <div className="card-header bg-secondary text-white text-center">
+            <h3>Your seats here!</h3>
+          </div>
+          <div className="card-body">
+            <p
+              className="font-weight-bold text-danger"
+              style={{ fontSize: "22px" }}
+            >
+              Number of Seats: <span>{numSeat}</span>
+            </p>
+            <table className="table text-center">
+              <thead>
+                <tr>
+                  <th>Seat</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {arrBookedSeat.map((seat, idx) => {
+                  return (
+                    <tr key={idx}>
+                      <td>{seat.soGhe}</td>
+                      <td>{seat.gia}</td>
+                      <td>
+                        {seat.daDat ? (
+                          <p className="text-success">Booked</p>
+                        ) : (
+                          <p className="text-danger">Selecting</p>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+
+                {arrSelectedSeat.map((seat, idx) => {
+                  return (
+                    <tr key={idx}>
+                      <td>{seat.soGhe}</td>
+                      <td>{seat.gia}</td>
+                      <td>
+                        {seat.daDat ? (
+                          <p className="text-success">Booked</p>
+                        ) : (
+                          <p className="text-danger">Selecting</p>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <div className="card-footer">
+            <p
+              className="alert-success font-weight-bold p-3"
+              style={{ fontSize: "22px" }}
+            >
+              TOTAL PRICE : {this.renderTotalAmt()}
+            </p>
+          </div>
         </div>
       </div>
     );
@@ -78,16 +107,4 @@ const mapStateToProps = (rootReducer) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    removeSeat: (maGhe) => {
-      const action = {
-        type: "REMOVE_SEAT",
-        maGhe,
-      };
-      dispatch(action);
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ThongTinMuaVe);
+export default connect(mapStateToProps)(ThongTinMuaVe);

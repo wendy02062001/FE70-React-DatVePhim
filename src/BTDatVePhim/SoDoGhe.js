@@ -2,6 +2,21 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
 class SoDoGhe extends Component {
+  handleOnClick = (event, seat) => {
+    let button = event.target;
+    let btnColor = button.style.backgroundColor;
+    console.log(btnColor);
+    if (btnColor === "white") {
+      button.style.backgroundColor = "green";
+      this.props.addSeat(seat);
+    } else if (btnColor === "green") {
+      button.style.backgroundColor = "white";
+      this.props.removeSeat(seat.soGhe);
+    } else {
+      return;
+    }
+  };
+
   renderBox = (index) => {
     let { dataGhe } = this.props;
     return dataGhe[index].danhSachGhe.map((ghe, idx) => {
@@ -29,12 +44,12 @@ class SoDoGhe extends Component {
                 <button
                   className="btn"
                   style={{
-                    backgroundColor: "white",
+                    backgroundColor: ghe.daDat ? "red" : "white",
                     width: "25px",
                     height: "25px",
                   }}
-                  onClick={() => {
-                    this.props.addSeat(ghe);
+                  onClick={(event) => {
+                    this.handleOnClick(event, ghe);
                   }}
                 ></button>
               </td>
@@ -47,12 +62,12 @@ class SoDoGhe extends Component {
             <button
               className="btn"
               style={{
-                backgroundColor: "white",
+                backgroundColor: ghe.daDat ? "red" : "white",
                 width: "25px",
                 height: "25px",
               }}
-              onClick={() => {
-                this.props.addSeat(ghe);
+              onClick={(event) => {
+                this.handleOnClick(event, ghe);
               }}
             ></button>
           </td>
@@ -131,6 +146,14 @@ const mapDispatchToProps = (dispatch) => {
       const action = {
         type: "ADD_SEAT",
         ghe,
+      };
+      dispatch(action);
+    },
+
+    removeSeat: (maGhe) => {
+      const action = {
+        type: "REMOVE_SEAT",
+        maGhe,
       };
       dispatch(action);
     },

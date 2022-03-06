@@ -2,6 +2,7 @@ const stateDefault = {
   cusName: "Nguyen Van A",
   numSeat: 0,
   arrSelectedSeat: [],
+  arrBookedSeat: [],
 };
 
 export const datVePhimReducer = (state = stateDefault, action) => {
@@ -11,6 +12,7 @@ export const datVePhimReducer = (state = stateDefault, action) => {
       let isSelected = seats.find((seat) => seat.soGhe === action.ghe.soGhe);
       if (!isSelected) {
         seats.push(action.ghe);
+        state.numSeat += 1;
       }
       state.arrSelectedSeat = seats;
       return { ...state };
@@ -20,18 +22,21 @@ export const datVePhimReducer = (state = stateDefault, action) => {
       let seats = [...state.arrSelectedSeat];
       seats = seats.filter((seat) => seat.soGhe !== action.maGhe);
       state.arrSelectedSeat = seats;
+      state.numSeat -= 1;
       return { ...state };
     }
 
     case "CONFIRM_SELECTION": {
       let seats = [...state.arrSelectedSeat];
+      let booked = [...state.arrBookedSeat];
       if (window.confirm("Are you sure to confirm your seats?")) {
         for (let seat of seats) {
           seat.daDat = true;
-          console.log(seat);
+          booked.push(seat);
         }
 
-        state.arrSelectedSeat = seats;
+        state.arrSelectedSeat = [];
+        state.arrBookedSeat = booked;
 
         return { ...state };
       }
