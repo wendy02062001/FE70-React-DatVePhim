@@ -60,7 +60,7 @@ class ThongTinMuaVe extends Component {
                       <td>{seat.gia}</td>
                       <td>
                         {seat.daDat ? (
-                          <p className="text-danger">Booked</p>
+                          <p className="alert-danger">Booked</p>
                         ) : (
                           <p className="text-success">Selecting</p>
                         )}
@@ -76,9 +76,9 @@ class ThongTinMuaVe extends Component {
                       <td>{seat.gia}</td>
                       <td>
                         {seat.daDat ? (
-                          <p className="text-success">Booked</p>
+                          <p className="alert-danger">Booked</p>
                         ) : (
-                          <p className="text-danger">Selecting</p>
+                          <p className="text-success">Selecting</p>
                         )}
                       </td>
                     </tr>
