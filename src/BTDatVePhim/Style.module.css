@@ -22,10 +22,7 @@
   line-height: 10px;
 }
 
-.seatSelection td:nth-child(13),
-.seatSelection td:nth-child(14) {
-  padding-left: 2px;
-}
+
 
 .confirmTable td,
 .confirmTable tr {

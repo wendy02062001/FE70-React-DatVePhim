@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import SoDoGhe from "./SoDoGhe";
 import style from "./Style.module.css";
 import ThongTinMuaVe from "./ThongTinMuaVe";
@@ -220,7 +220,7 @@ export default class BTDatVePhim extends Component {
         <div className="container-fluid">
           <h1 className="text-center py-4 text-white">MOVIE SEAT SELECTION</h1>
           <div className="row">
-            <div className="col-8">
+            <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-8 mb-3">
               <div className={`${style.formContainer}`}>
                 <div className="row my-3 text-white">
                   <div className="col-4">

@@ -25,7 +25,7 @@ class ThongTinMuaVe extends Component {
     let { numSeat, arrSelectedSeat, arrBookedSeat } = this.props.datVePhim;
     arrBookedSeat = _.sortBy(arrBookedSeat, ["soGhe"]);
     return (
-      <div className="col-3">
+      <div className="col-lg-3 col-md-12 col-sm-12 col-3">
         <div
           className="card"
           style={{
