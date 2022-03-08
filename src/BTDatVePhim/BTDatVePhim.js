@@ -243,7 +243,7 @@ export default class BTDatVePhim extends Component {
                   </div>
                 </div>
 
-                <div className={style.seatSelection}>
+                <div className={`${style.seatSelection}`}>
                   <div className="text-center">
                     <h5 className="alert-danger py-2 my-3">
                       Please Select Your Seat NOW!

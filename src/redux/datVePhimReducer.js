@@ -1,5 +1,4 @@
 const stateDefault = {
-  cusName: "Nguyen Van A",
   numSeat: 0,
   arrSelectedSeat: [],
   arrBookedSeat: [],
