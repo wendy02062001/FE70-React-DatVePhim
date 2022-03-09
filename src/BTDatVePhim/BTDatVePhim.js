@@ -194,20 +194,6 @@ export default class BTDatVePhim extends Component {
     },
   ];
 
-  state = {
-    nameCus: "",
-  };
-
-  handleChangeInput = (event) => {
-    let { value } = event.target;
-    this.setState(
-      {
-        nameCus: value,
-      },
-      () => console.log(this.state)
-    );
-  };
-
   render() {
     return (
       <div

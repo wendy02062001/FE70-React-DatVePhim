@@ -47,6 +47,7 @@ class SoDoGhe extends Component {
                     backgroundColor: ghe.daDat ? "red" : "white",
                     width: "25px",
                     height: "25px",
+                    outline: "none",
                   }}
                   onClick={(event) => {
                     this.handleOnClick(event, ghe);
@@ -65,6 +66,7 @@ class SoDoGhe extends Component {
                 backgroundColor: ghe.daDat ? "red" : "white",
                 width: "25px",
                 height: "25px",
+                outline: "none",
               }}
               onClick={(event) => {
                 this.handleOnClick(event, ghe);
